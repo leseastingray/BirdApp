@@ -8,9 +8,9 @@ namespace BirdApp.Models
     public class BirdSighting
     {
         // Bird in sighting
-        public string SightingBird { get; set; }
+        public string BirdName { get; set; }
         // Name of bird watcher who made the sighting
-        public string SightingWatcher { get; set; }
+        public string WatcherName { get; set; }
         // Date of bird sighting
         public DateTime SightingDate { get; set; }
 

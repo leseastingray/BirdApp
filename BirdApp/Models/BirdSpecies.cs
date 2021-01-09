@@ -8,8 +8,8 @@ namespace BirdApp.Models
     public class BirdSpecies
     {
         // Getters and Setters
-        public string BirdSpeciesName { get; set; }
-        public string BirdSpeciesLocation { get; set; }
-        public float BirdSpeciesLength { get; set; }
+        public string Name { get; set; }
+        public string Location { get; set; }
+        public float Length { get; set; }
     }
 }
