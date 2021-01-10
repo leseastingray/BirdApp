@@ -7,14 +7,52 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Bird Sighting</title>
-    <style> /* CSS Styles from figure 2-14 (as said by p 59) can go here */ </style>
+    <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+
+    <script src="~/lib/jquery/jquery.min.js"></script>
+    <script src="~/lib/popper.js/cjs/popper.min.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="~/lib/jquery-validate/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
 </head>
 <body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+        <a class="navbar-brand" href="/">Bird App</a>
+        <button class="navbar-toggler" type="button"
+                data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <nav class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="navbar-nav mr-auto">
+                <a class="nav-item nav-link" href="/">Home</a>
+                <a class="nav-item nav-link active" href="/BirdSighting">Bird Sighting</a>
+                <a class="nav-item nav-link" href="/BirdSpecies">Bird Species</a>
+                <a class="nav-item nav-link" href="/BirdSpecies">Bird Watcher</a>
+            </div>
+        </nav>
+    </nav>
     <h1>Bird Sighting Form</h1>
     <form asp-action="Index" method="post">
+        <div asp-validation-summary="All"></div>
         <div>
-            <label asp-for="BirdName">Bird in sighting:</label>
+            <label asp-for="BirdName">Name of bird in sighting (type "Unknown" if unknown):</label>
             <input asp-for="BirdName" />
+        </div>
+        <div>
+            <label asp-for="Habitat">Habitat in which bird was sighted:</label>
+            <input asp-for="Habitat" />
+        </div>
+        <div>
+            <label asp-for="Length">Bird length, estimated in inches:</label>
+            <input asp-for="Length" />
+        </div>
+        <div>
+            <label asp-for="Description">Description of bird in sighting:</label>
+            <input asp-for="Description" />
         </div>
         <div>
             <label asp-for="WatcherName">Bird watcher name:</label>

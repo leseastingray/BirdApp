@@ -8,6 +8,8 @@
     <Folder Include="Views\BirdSpecies\" />
     <Folder Include="Views\BirdWatcher\" />
     <Folder Include="Views\Shared\" />
+    <Folder Include="wwwroot\lib\bootstrap\" />
+    <Folder Include="wwwroot\lib\jquery\" />
   </ItemGroup>
 
 </Project>

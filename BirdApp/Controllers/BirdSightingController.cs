@@ -17,6 +17,11 @@ namespace BirdApp.Controllers
         [HttpPost]
         public IActionResult AddSighting(BirdSighting sighting)
         {
+            // Validate model
+            /* if (ModelState.IsValid)
+            {
+
+            } */
             return RedirectToAction("List", "Sighting");
         }
         // Method to update bird sighting

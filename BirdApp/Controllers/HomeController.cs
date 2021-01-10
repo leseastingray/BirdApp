@@ -10,6 +10,7 @@ namespace BirdApp.Controllers
     {
         public IActionResult Index()
         {
+            ViewBag.Title = "Welcome to Bird App";
             ViewBag.Name = "California Scrub Jay";
             ViewBag.Location = "West of the Cascades";
             ViewBag.Length = 11.5;
