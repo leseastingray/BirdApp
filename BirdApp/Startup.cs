@@ -8,6 +8,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using BirdApp.Models;
+using Microsoft.AspNetCore.Antiforgery;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.CookiePolicy;
 
 namespace BirdApp
 {
@@ -24,10 +30,30 @@ namespace BirdApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            // This addition should help prevent cross-site request forgery
+            services.AddAntiforgery(options =>
+            {
+                // Set Cookie properties using CookieBuilder properties†.
+                options.FormFieldName = "AntiforgeryFieldname";
+                options.HeaderName = "X-CSRF-TOKEN-HEADERNAME";
+                options.SuppressXFrameOptionsHeader = false;
+            });
+            // Dependency injection for repos into controllers
+            //services.AddTransient<ISpeciesRepository, SpeciesRepository>();
+            //services.AddTransient<ISightingsRepository, SightingsRepository>();
+
+            // To connect with the local database
+            services.AddDbContext<BirdAppContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("BirdAppContext")));
+            services.AddIdentity<BirdWatcher, IdentityRole>()
+                .AddEntityFrameworkStores<BirdAppContext>()
+                .AddDefaultTokenProviders();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IAntiforgery antiForgery, BirdAppContext context)
         {
             if (env.IsDevelopment())
             {
@@ -44,6 +70,39 @@ namespace BirdApp
 
             app.UseRouting();
 
+            // An additional protection against cross-site request forgery
+            app.Use(next => context =>
+            {
+                string path = context.Request.Path.Value;
+
+                if (
+                    string.Equals(path, "/", StringComparison.OrdinalIgnoreCase) ||
+                    string.Equals(path, "/index.html", StringComparison.OrdinalIgnoreCase))
+                {
+                    // The request token can be sent as a JavaScript-readable cookie, 
+                    // and Angular uses it by default.
+                    var tokens = antiForgery.GetAndStoreTokens(context);
+                    context.Response.Cookies.Append("XSRF-TOKEN", tokens.RequestToken,
+                        new CookieOptions() { HttpOnly = false });
+                }
+
+                return next(context);
+            });
+            // An addition to address the X-Frame-Options Header not set issue
+            app.Use(async (ctx, next) => {
+                //ctx.Response.Headers.Add("X-Frame-Options", "SAMEORIGIN"); //commented this out due to error
+                ctx.Response.Headers.Add("X-Content-Type-Options", "nosniff");
+                await next();
+            });
+            // An addition to address cookie without secure flag issue
+            app.UseCookiePolicy(new CookiePolicyOptions
+            {
+                HttpOnly = HttpOnlyPolicy.Always,
+                Secure = CookieSecurePolicy.Always
+            });
+
+            // Added to enable Identity, Authentication must come first
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -52,6 +111,13 @@ namespace BirdApp
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            // Variables for new seed method
+            var serviceProvider = app.ApplicationServices;
+            var userManager = serviceProvider.GetRequiredService<UserManager<BirdWatcher>>();
+            var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+            // New seed method, calls Seed() from SeedData class
+            SeedData.Seed(context, userManager, roleManager);
         }
     }
 }

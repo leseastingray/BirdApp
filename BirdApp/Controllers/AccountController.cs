@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BirdApp.Controllers
 {
-    public class BirdWatcherController : Controller
+    public class AccountController : Controller
     {
         public IActionResult Index()
         {

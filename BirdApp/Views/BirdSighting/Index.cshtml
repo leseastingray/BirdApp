@@ -39,8 +39,8 @@
     <form asp-action="Index" method="post">
         <div asp-validation-summary="All"></div>
         <div>
-            <label asp-for="BirdName">Name of bird in sighting (type "Unknown" if unknown):</label>
-            <input asp-for="BirdName" />
+            <label asp-for="Name">Name of bird in sighting (type "Unknown" if unknown):</label>
+            <input asp-for="Name" />
         </div>
         <div>
             <label asp-for="Habitat">Habitat in which bird was sighted:</label>
@@ -55,8 +55,8 @@
             <input asp-for="Description" />
         </div>
         <div>
-            <label asp-for="WatcherName">Bird watcher name:</label>
-            <input asp-for="WatcherName" />
+            <label asp-for="BirdWatcher">Bird watcher name:</label>
+            <input asp-for="BirdWatcher" />
         </div>
         <div>
             <label asp-for="SightingDate">Bird sighting date:</label>
