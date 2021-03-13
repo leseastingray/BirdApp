@@ -13,7 +13,7 @@ namespace BirdApp.Models
     {
         public BirdAppContext(DbContextOptions<BirdAppContext> options) : base(options) { }
         // DbSet for the database
-        public DbSet<BirdSpecies> Species { get; set; }
+        public DbSet<BirdSpecies> Birds { get; set; }
         public DbSet<BirdSighting> Sightings { get; set; }
         // This DbSet is now taken care of by the parent class, IdentityUser?
         //public List<BirdWatcher> BirdWatchers { get; set; }

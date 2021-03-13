@@ -11,7 +11,7 @@ namespace BirdApp.Models
         public static void Seed(BirdAppContext context, UserManager<BirdWatcher> userManager,
                                           RoleManager<IdentityRole> roleManager)
         {
-            if (!context.Species.Any())
+            if (!context.Birds.Any())
             {
                 // TODO: check the results and do something if the operation failed--if it ever does
                 var result = roleManager.CreateAsync(new IdentityRole("Member")).Result;
@@ -51,9 +51,10 @@ namespace BirdApp.Models
                     PrimaryColor = "Blue",
                     Description = "Loud calling bird that tends to live in pairs or small family groups. Omnivore, but commonly found eating or caching nuts and acorns. Uses bowl-shaped nests in trees.",
                     Habitat = "Scrub",
+                    BirdPicture = "",
                     BirdWatcher = stingray
                 };
-                context.Species.Add(bird);  // queues up the review to be added to the DB
+                context.Birds.Add(bird);  // queues up the review to be added to the DB
 
                 bird = new BirdSpecies
                 {
@@ -64,9 +65,10 @@ namespace BirdApp.Models
                     PrimaryColor = "Blue",
                     Description = "Loud calling bird with dark crest. Omnivore, but commonly found eating or caching nuts and acorns. Uses bowl-shaped nests in trees.",
                     Habitat = "Forest",
+                    BirdPicture = "",
                     BirdWatcher = stingray
                 };
-                context.Species.Add(bird);
+                context.Birds.Add(bird);
 
                 bird = new BirdSpecies
                 {
@@ -76,9 +78,11 @@ namespace BirdApp.Models
                     TypicalSize = 4,
                     PrimaryColor = "Black",
                     Description = "Loud, large adaptable bird that forms pairs but often found in flocks. Omnivore, including eggs and carrion.",
-                    Habitat = "Open areas"
+                    Habitat = "Open areas",
+                    BirdPicture = "",
+                    BirdWatcher = stingray
                 };
-                context.Species.Add(bird);
+                context.Birds.Add(bird);
                 BirdWatcher spot = new BirdWatcher
                 {
                     UserName = "Spot",
@@ -98,9 +102,11 @@ namespace BirdApp.Models
                     TypicalSize = 0,
                     PrimaryColor = "Green",
                     Description = "Tiny hovering bird, highly territorial. Males have throat feathers that appear red from some angles. High-pitched, loud clicking call.",
-                    Habitat = "Open areas and scrub"
+                    Habitat = "Open areas and scrub",
+                    BirdPicture = "",
+                    BirdWatcher = spot
                 };
-                context.Species.Add(bird);
+                context.Birds.Add(bird);
 
                 BirdWatcher meganCat = new BirdWatcher()
                 {
@@ -121,9 +127,11 @@ namespace BirdApp.Models
                     TypicalSize = 0,
                     PrimaryColor = "Brown",
                     Description = "Typical sparrow with variable coloring. Can be dominately brown or grey, but most varieties have in common bright white tail feathers. Eats primarily seeds.",
-                    Habitat = "Forest"
+                    Habitat = "Forest",
+                    BirdPicture = "",
+                    BirdWatcher = meganCat
                 };
-                context.Species.Add(bird);
+                context.Birds.Add(bird);
                 // Stores all the seeded reviews in the database
                 context.SaveChanges();
             }
