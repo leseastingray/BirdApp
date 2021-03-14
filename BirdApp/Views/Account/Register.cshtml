@@ -1,7 +1,6 @@
-﻿@model IEnumerable<BirdApp.Models.BirdSpecies>
-
+﻿@model RegisterVM
 @{
-    ViewData["Title"] = "Home Page";
+    ViewBag.Title = "Register";
 }
 <!DOCTYPE html>
 <html>
@@ -29,9 +28,9 @@
         </button>
         <nav class="collapse navbar-collapse" id="navbarSupportedContent">
             <div class="navbar-nav mr-auto">
-                <a class="nav-item nav-link" href="/">Home</a>
+                <a class="nav-item nav-link active" href="/">Home</a>
                 <a class="nav-item nav-link" href="/BirdSighting">Bird Sighting</a>
-                <a class="nav-item nav-link active" href="/BirdSpecies">Bird Species</a>
+                <a class="nav-item nav-link" href="/BirdSpecies">Bird Species</a>
                 <a class="nav-item nav-link" href="/Admin">Administration</a>
                 @using Microsoft.AspNetCore.Identity
                 @using BirdApp.Models
@@ -62,44 +61,43 @@
             </div>
         </nav>
     </nav>
-    <h4 class="text-center text-uppercase">List of bird species</h4>
-
-    <p>
-        <a asp-action="AddBird" class="btn btn-sm btn-primary rounded-0 text-uppercase"><i class="fas fa-plus-circle"></i> Add New Bird</a>
-    </p>
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>@Html.DisplayNameFor(model => model.Name)</th>
-                <th>@Html.DisplayNameFor(model => model.ScientificName)</th>
-                <th>@Html.DisplayNameFor(model => model.Family)</th>
-                <th>@Html.DisplayNameFor(model => model.TypicalSize)</th>
-                <th>@Html.DisplayNameFor(model => model.PrimaryColor)</th>
-                <th>@Html.DisplayNameFor(model => model.Description)</th>
-                <th>@Html.DisplayNameFor(model => model.Habitat)</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var bird in Model)
-            {
-                <tr>
-                    <td>
-                        <img src="~/images/@bird.BirdPicture"
-                             class="rounded-circle"
-                             height="40" width="40"
-                             asp-append-version="true" />
-                        @bird.Name
-                    </td>
-                    <td>@bird.ScientificName</td>
-                    <td>@bird.Family</td>
-                    <td>@bird.TypicalSize</td>
-                    <td>@bird.PrimaryColor</td>
-                    <td>@bird.Description</td>
-                    <td>@bird.Habitat</td>
-                </tr>
-
-            }
-        </tbody>
-    </table>
-    </body>
+    <h1>Register</h1>
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <form method="post" asp-action="Register">
+        <div class="form-group row">
+            <div class="col-sm-2"><label>Username:</label></div>
+            <div class="col-sm-4">
+                <input asp-for=" Username" class="form-control" />
+            </div>
+            <div class="col">
+                <span asp-validation-for="Username" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-2"><label>Password:</label></div>
+            <div class="col-sm-4">
+                <input type="password" asp-for=" Password" class="form-control" />
+            </div>
+            <div class="col">
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-2"><label>Confirm Password:</label></div>
+            <div class="col-sm-4">
+                <input type="password" asp-for=" ConfirmPassword" class="form-control" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="offset-2 col-sm-4">
+                <button type="submit" class="btn btn-primary">Register</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="offset-2 col-sm-4">
+                Already registered? <a asp-action="LogIn">Log In</a>
+            </div>
+        </div>
+    </form>
+</body>
 </html>

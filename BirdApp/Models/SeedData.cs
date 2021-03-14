@@ -51,7 +51,7 @@ namespace BirdApp.Models
                     PrimaryColor = "Blue",
                     Description = "Loud calling bird that tends to live in pairs or small family groups. Omnivore, but commonly found eating or caching nuts and acorns. Uses bowl-shaped nests in trees.",
                     Habitat = "Scrub",
-                    BirdPicture = "",
+                    BirdPicture = "/images/h_california-scrub-jay_009_summer_washington_jerrymcfarland_flickrcc-by-nc-2.0_adult.jpg",
                     BirdWatcher = stingray
                 };
                 context.Birds.Add(bird);  // queues up the review to be added to the DB
