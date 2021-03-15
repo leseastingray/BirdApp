@@ -1,4 +1,4 @@
-﻿@model BirdSpeciesVM
+﻿@model BirdSpecies
 
 @{
     string title = ViewBag.Action + " Bird";
@@ -87,12 +87,12 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label asp-for="BirdSpeciesImage" class="control-label"></label>
+                            <label asp-for="BirdPicture" class="control-label"></label>
                             <div class="custom-file">
-                                <input asp-for="BirdSpeciesImage" class="custom-file-input" id="customFile">
+                                <input asp-for="BirdPicture" class="custom-file-input" id="customFile">
                                 <label class="custom-file-label" for="customFile">Choose file</label>
                             </div>
-                            <span asp-validation-for="BirdSpeciesImage" class="text-danger"></span>
+                            <span asp-validation-for="BirdPicture" class="text-danger"></span>
                         </div>
                     </div>
                 </div>

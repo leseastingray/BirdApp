@@ -21,10 +21,6 @@ namespace BirdApp.Models
         [Required(ErrorMessage = "Please enter a habitat in which the bird was sighted.")]
         public string Habitat { get; set; }
 
-        [Required(ErrorMessage = "Please select a bird size for your sighting.")]
-        [Range(0, 6, ErrorMessage = "Select a bird size.")]
-        // 0 = sparrow-sized, 1 = small, 2 = robin-sized, 3 = medium, 4 = crow-sized,  5 = large, 6 = goose-sized or larger
-        public int? Size { get; set; }
         // Estimated bird length in inches, range from 0.1 inch to 60 inches; not required
         [Range(0.1, 60)]
         public float? Length { get; set; }
