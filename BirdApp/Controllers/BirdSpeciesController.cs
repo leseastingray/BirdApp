@@ -150,6 +150,5 @@ namespace BirdApp.Controllers
             dbContext.SaveChanges();
             return RedirectToAction("Index");
         }
-    //TODO: sighting functionality
     }
 }  

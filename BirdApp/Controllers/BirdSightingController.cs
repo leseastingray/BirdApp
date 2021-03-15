@@ -40,6 +40,7 @@ namespace BirdApp.Controllers
         {
             // BirdSighting is the domain model
             var sighting = new BirdSighting { 
+                BirdName = sightingVM.BirdName,
                 Habitat = sightingVM.Habitat,
                 Length = sightingVM.Length,
                 Description = sightingVM.Description,
@@ -59,7 +60,46 @@ namespace BirdApp.Controllers
 
             return RedirectToAction("Index", "BirdSpecies");
         }
-        // Method to update bird sighting
-        // Method to delete bird sighting
+        // Method to get edit review form, requires log in
+        [Authorize]
+        [HttpGet]
+        public IActionResult EditSighting(int id)
+        {
+            // Gets the Appropriate Bird page
+            var sighting = context.Sightings.Find(id);
+            return View(sighting);
+        }
+        [HttpPost]
+        public IActionResult EditSighting(BirdSighting sighting)
+        {
+            // Method to edit reviews, adds to the context/repo
+            if (ModelState.IsValid)
+            {
+                context.Sightings.Update(sighting);
+                context.SaveChanges();
+                return RedirectToAction("Index", "BirdSighting");
+            }
+            else
+            {
+                return View(sighting);
+            }
+        }
+        // Method to get delete review form, requires log in
+        [Authorize]
+        [HttpGet]
+        public IActionResult DeleteSighting(int id)
+        {
+            // Gets the appropriate Delete page by id
+            var sighting = context.Sightings.Find(id);
+            return View(sighting);
+        }
+        [HttpPost]
+        public IActionResult DeleteSighting(BirdSighting sighting)
+        {
+            // Method to delete reviews
+            context.Sightings.Remove(sighting);
+            context.SaveChanges();
+            return RedirectToAction("Index", "BirdSighting");
+        }
     }
 }

@@ -68,25 +68,30 @@
     <table class="table table-bordered">
         <thead>
             <tr>
+                <th>Bird Name</th>
                 <th>Description</th>
                 <th>Habitat</th>
                 <th>Length</th>
                 <th>Sighting Date</th>
-                <th>Bird Watcher</th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
             @foreach (var sighting in Model)
             {
-                <tr>
-                    <td>@sighting.Description</td>
-                    <td>@sighting.Habitat</td>
-                    <td>@sighting.Length</td>
-                    <td>@sighting.SightingDate</td>
-                    <td>@sighting.BirdWatcher</td>
-                    <td></td>
-                </tr>
+            <tr>
+                <td>@sighting.BirdName</td>
+                <td>@sighting.Description</td>
+                <td>@sighting.Habitat</td>
+                <td>@sighting.Length</td>
+                <td>@sighting.SightingDate</td>
+                <td>
+                    <a asp-controller="BirdSighting" asp-action="EditSighting"
+                       asp-route-id="@sighting.SightingID">Edit</a>
+                    <a asp-controller="BirdSighting" asp-action="DeleteSighting"
+                       asp-route-id="@sighting.SightingID">Delete</a>
+                </td>
+            </tr>
             }
         </tbody>
     </table>

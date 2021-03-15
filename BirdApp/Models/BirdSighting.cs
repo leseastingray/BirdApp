@@ -17,6 +17,7 @@ namespace BirdApp.Models
         private List<BirdSighting> sightings = new List<BirdSighting>();
         // Refers to BirdSpecies object
         public BirdSpecies Name { get; set; }
+        public string BirdName { get; set; }
         // Habitat in which bird was sighted
         [Required(ErrorMessage = "Please enter a habitat in which the bird was sighted.")]
         public string Habitat { get; set; }

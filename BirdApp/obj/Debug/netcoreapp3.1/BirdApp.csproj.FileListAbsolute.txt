@@ -88,3 +88,5 @@ C:\Users\Student\Documents\ASPNET\BirdApp\BirdApp\obj\Debug\netcoreapp3.1\Razor\
 C:\Users\Student\Documents\ASPNET\BirdApp\BirdApp\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Index.cshtml.g.cs
 C:\Users\Student\Documents\ASPNET\BirdApp\BirdApp\obj\Debug\netcoreapp3.1\Razor\Views\BirdSighting\AddSighting.cshtml.g.cs
 C:\Users\Student\Documents\ASPNET\BirdApp\BirdApp\obj\Debug\netcoreapp3.1\Razor\Views\BirdSighting\Index.cshtml.g.cs
+C:\Users\Student\Documents\ASPNET\BirdApp\BirdApp\obj\Debug\netcoreapp3.1\Razor\Views\BirdSighting\DeleteSighting.cshtml.g.cs
+C:\Users\Student\Documents\ASPNET\BirdApp\BirdApp\obj\Debug\netcoreapp3.1\Razor\Views\BirdSighting\EditSighting.cshtml.g.cs
