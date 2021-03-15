@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BirdApp.Models
 {
@@ -36,6 +38,9 @@ namespace BirdApp.Models
         // For bird pictures
         [Required(ErrorMessage ="Please select a picture for the bird.")]
         public string BirdPicture { get; set; }
+        // added to test something
+        //[NotMapped]
+        //public IFormFile BirdSpeciesImage { get; set; }
         public BirdWatcher BirdWatcher { get; set; }
 
         // Get List holding associated Comment objects
