@@ -44,10 +44,9 @@ namespace BirdApp.Controllers
                 Habitat = sightingVM.Habitat,
                 Length = sightingVM.Length,
                 Description = sightingVM.Description,
-                SightingDate = sightingVM.SightingDate
             };
             sighting.BirdWatcher = userManager.GetUserAsync(User).Result;
-            //sighting.SightingDate = DateTime.Now;
+            sighting.SightingDate = DateTime.Now;
 
             // Retrieve the bird that this sighting is for
             var bird = (from b in context.Birds

@@ -101,21 +101,9 @@
                 <td>
                     @if (bird.Sightings.Count != 0)
                     {
-                        @foreach (BirdSighting sighting in bird.Sightings)
-                        {
-                    <p>
-                        <strong class="m-3">Sighting:</strong>
-                        @sighting.Description <br />
-                        <strong class="m-3">Length:</strong>
-                        @sighting.Length <br />
-                        <strong class="m-3">By:</strong>
-                        @sighting.BirdWatcher.UserName<br />
-                        <strong class="m-3">Date:</strong>
-                        @sighting.SightingDate.Date<br />
-                    </p>
-                        }
+                        @bird.Sightings.Count
                     }
-                    <a asp-controller="BirdSighting" asp-action="AddSighting" asp-route-birdId="@bird.BirdID" class="btn btn-secondary col-2">Add Sighting</a>
+                    <a asp-controller="BirdSighting" asp-action="AddSighting" asp-route-birdId="@bird.BirdID" class="btn btn-secondary">Add Sighting</a>
                 </td>
                 <td>
                     <a asp-controller="BirdSpecies" asp-action="EditBird"
