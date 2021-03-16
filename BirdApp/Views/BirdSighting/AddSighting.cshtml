@@ -29,7 +29,7 @@
         <nav class="collapse navbar-collapse" id="navbarSupportedContent">
             <div class="navbar-nav mr-auto">
                 <a class="nav-item nav-link" href="/">Home</a>
-                <a class="nav-item nav-link active" href="/BirdSighting">Bird Sighting</a>
+                <a class="nav-item nav-link active" href="/BirdSighting">Bird Sightings</a>
                 <a class="nav-item nav-link" href="/BirdSpecies">Bird Species</a>
                 <a class="nav-item nav-link" href="/Admin">Administration</a>
                 @using Microsoft.AspNetCore.Identity
@@ -78,7 +78,7 @@
         </div>
         <div>
             <label asp-for="Description">Description of bird in sighting:</label>
-            <input asp-for="Description" />
+            <textarea asp-for="Description"></textarea>
         </div>
         <div>
             <label asp-for="SightingDate">Bird sighting date:</label>
