@@ -4,14 +4,16 @@ using BirdApp.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BirdApp.Migrations
 {
     [DbContext(typeof(BirdAppContext))]
-    partial class BirdAppContextModelSnapshot : ModelSnapshot
+    [Migration("20210315222707_Sightings")]
+    partial class Sightings
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,9 +27,6 @@ namespace BirdApp.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("BirdName")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("BirdSightingSightingID")
                         .HasColumnType("int");
@@ -70,6 +69,7 @@ namespace BirdApp.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("BirdPicture")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("BirdWatcherId")

@@ -36,7 +36,6 @@ namespace BirdApp.Models
         public string Habitat { get; set; }
 
         // For bird pictures
-        [Required(ErrorMessage ="Please select a picture for the bird.")]
         public string BirdPicture { get; set; }
         // added to test something
         //[NotMapped]

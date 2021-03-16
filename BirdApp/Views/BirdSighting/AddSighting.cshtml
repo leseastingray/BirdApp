@@ -1,10 +1,12 @@
-﻿@{
-    ViewBag.Title = "Access Denied";
+﻿@model BirdSightingVM
+@{
+    Layout = null;
 }
+<!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
+    <title>Bird Sighting</title>
     <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 
@@ -27,7 +29,7 @@
         <nav class="collapse navbar-collapse" id="navbarSupportedContent">
             <div class="navbar-nav mr-auto">
                 <a class="nav-item nav-link" href="/">Home</a>
-                <a class="nav-item nav-link" href="/BirdSighting">Bird Sighting</a>
+                <a class="nav-item nav-link active" href="/BirdSighting">Bird Sightings</a>
                 <a class="nav-item nav-link" href="/BirdSpecies">Bird Species</a>
                 <a class="nav-item nav-link" href="/Admin">Administration</a>
                 @using Microsoft.AspNetCore.Identity
@@ -59,6 +61,27 @@
             </div>
         </nav>
     </nav>
-    <h2 class="text-warning">Access Denied</h2>
+    <h1>Bird Sighting Form</h1>
+    <form asp-action="AddSighting" method="post">
+        <div asp-validation-summary="All"></div>
+        <div>
+            <label asp-for="BirdName">Name of bird in sighting (type "Unknown" if unknown):</label>
+            <input asp-for="BirdName" />
+        </div>
+        <div>
+            <label asp-for="Habitat">Habitat in which bird was sighted:</label>
+            <input asp-for="Habitat" />
+        </div>
+        <div>
+            <label asp-for="Length">Bird length, estimated in inches:</label>
+            <input asp-for="Length" />
+        </div>
+        <div>
+            <label asp-for="Description">Description of bird in sighting:</label>
+            <textarea asp-for="Description"></textarea>
+        </div>
+        <button type="submit">Submit</button>
+        <a asp-action="Index">Cancel</a>
+    </form>
 </body>
 </html>

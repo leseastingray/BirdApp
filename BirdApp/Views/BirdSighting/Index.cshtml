@@ -1,12 +1,11 @@
-﻿@model BirdSighting
+﻿@model IEnumerable<BirdSighting>
 @{
-    Layout = null;
+    ViewData["Title"] = "Bird Sightings Page";
 }
 <!DOCTYPE html>
-<html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Bird Sighting</title>
+    <title>@ViewBag.Title</title>
     <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 
@@ -29,7 +28,7 @@
         <nav class="collapse navbar-collapse" id="navbarSupportedContent">
             <div class="navbar-nav mr-auto">
                 <a class="nav-item nav-link" href="/">Home</a>
-                <a class="nav-item nav-link active" href="/BirdSighting">Bird Sighting</a>
+                <a class="nav-item nav-link active" href="/BirdSighting">Bird Sightings</a>
                 <a class="nav-item nav-link" href="/BirdSpecies">Bird Species</a>
                 <a class="nav-item nav-link" href="/Admin">Administration</a>
                 @using Microsoft.AspNetCore.Identity
@@ -61,35 +60,39 @@
             </div>
         </nav>
     </nav>
-    <h1>Bird Sighting Form</h1>
-    <form asp-action="Index" method="post">
-        <div asp-validation-summary="All"></div>
-        <div>
-            <label asp-for="Name">Name of bird in sighting (type "Unknown" if unknown):</label>
-            <input asp-for="Name" />
-        </div>
-        <div>
-            <label asp-for="Habitat">Habitat in which bird was sighted:</label>
-            <input asp-for="Habitat" />
-        </div>
-        <div>
-            <label asp-for="Length">Bird length, estimated in inches:</label>
-            <input asp-for="Length" />
-        </div>
-        <div>
-            <label asp-for="Description">Description of bird in sighting:</label>
-            <input asp-for="Description" />
-        </div>
-        <div>
-            <label asp-for="BirdWatcher">Bird watcher name:</label>
-            <input asp-for="BirdWatcher" />
-        </div>
-        <div>
-            <label asp-for="SightingDate">Bird sighting date:</label>
-            <input asp-for="SightingDate" />
-        </div>
-        <button type="submit">Submit</button>
-        <a asp-action="Index">Clear</a>
-    </form>
+    <h4 class="text-center text-uppercase">List of bird sightings</h4>
+
+    <p>
+        <a asp-controller="BirdSighting" asp-action="AddSighting" class="btn btn-sm btn-primary rounded-0 text-uppercase"><i class="fas fa-plus-circle"></i> Add New Sighting</a>
+    </p>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Bird Name</th>
+                <th>Description</th>
+                <th>Habitat</th>
+                <th>Length</th>
+                <th>Sighting Date</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var sighting in Model)
+            {
+            <tr>
+                <td>@sighting.BirdName</td>
+                <td>@sighting.Description</td>
+                <td>@sighting.Habitat</td>
+                <td>@sighting.Length</td>
+                <td>@sighting.SightingDate</td>
+                <td>
+                    <a asp-controller="BirdSighting" asp-action="EditSighting"
+                       asp-route-id="@sighting.SightingID">Edit</a>
+                    <a asp-controller="BirdSighting" asp-action="DeleteSighting"
+                       asp-route-id="@sighting.SightingID">Delete</a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
 </body>
-</html>

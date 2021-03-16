@@ -1,0 +1,28 @@
+ZAP Security Scan Results, 3/15/2021
+
+Automated, Passive Scan Alerts:
+High: Cross Site Scripting
+Medium: X-Frame-Options Header Not Set
+Low: Absence of Anti-CSRF Tokens
+Low: Cookie No HttpOnly Flag
+Low: Cookie Without SameSite Attribute
+Low: Cookie Without Secure Flag
+Low: Incomplete or No Cache-control and Pragma HTTP Set
+Low: X-Content-Type-Options Header Missing
+Informational: Information Disclosure - Suspicious Comments
+Informational: Loosely Scoped Cookie
+Informational: Timestamp Disclosure - Unix
+
+Manual Scan Alerts:
+Medium: X-Frame-Options Header Not Set
+Low: Incomplete or No Cache-control and Pragma HTTP Header Set (74)
+Low: X-Content-Type-Options Header Missing (9)
+Informational: Information Disclosure - Suspicious Comments (4)
+Informational: Loosely Scoped Cookie (7)
+Informational: Timestamp Disclosure - Unix (1)
+
+Comments:
+Many of these security issues are the same that show up every time. 
+I tried to mitigate the X-Frame-Options Header Not Set, but it crashes my app when I add the additional code in Startup. The app appears to recognize an already existing key value to the mitigation feature.
+I also worked on the Cross Site Scripting (Reflected) issue. Originally it occurred in three places: EditBird, DeleteBird, and Login.
+I mitigated the issue at DeleteBird, but was not able to at EditBird or Login.

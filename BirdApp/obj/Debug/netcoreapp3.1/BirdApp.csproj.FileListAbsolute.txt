@@ -29,7 +29,6 @@ C:\Users\Student\Documents\ASPNET\BirdApp\BirdApp\obj\Debug\netcoreapp3.1\BirdAp
 C:\Users\Student\Documents\ASPNET\BirdApp\BirdApp\obj\Debug\netcoreapp3.1\BirdApp.pdb
 C:\Users\Student\Documents\ASPNET\BirdApp\BirdApp\obj\Debug\netcoreapp3.1\BirdApp.genruntimeconfig.cache
 C:\Users\Student\Documents\ASPNET\BirdApp\BirdApp\obj\Debug\netcoreapp3.1\BirdApp.csproj.CopyComplete
-C:\Users\Student\Documents\ASPNET\BirdApp\BirdApp\obj\Debug\netcoreapp3.1\Razor\Views\BirdSighting\Index.cshtml.g.cs
 C:\Users\Student\Documents\ASPNET\BirdApp\BirdApp\obj\Debug\netcoreapp3.1\Razor\Views\_ViewImports.cshtml.g.cs
 C:\Users\Student\Documents\ASPNET\BirdApp\BirdApp\bin\Debug\netcoreapp3.1\libman.json
 C:\Users\Student\Documents\ASPNET\BirdApp\BirdApp\bin\Debug\netcoreapp3.1\Humanizer.dll
@@ -86,3 +85,8 @@ C:\Users\Student\Documents\ASPNET\BirdApp\BirdApp\obj\Debug\netcoreapp3.1\Razor\
 C:\Users\Student\Documents\ASPNET\BirdApp\BirdApp\obj\Debug\netcoreapp3.1\Razor\Views\BirdSpecies\AddBird.cshtml.g.cs
 C:\Users\Student\Documents\ASPNET\BirdApp\BirdApp\obj\Debug\netcoreapp3.1\Razor\Views\BirdSpecies\EditBird.cshtml.g.cs
 C:\Users\Student\Documents\ASPNET\BirdApp\BirdApp\obj\Debug\netcoreapp3.1\Razor\Views\BirdSpecies\DeleteBird.cshtml.g.cs
+C:\Users\Student\Documents\ASPNET\BirdApp\BirdApp\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Index.cshtml.g.cs
+C:\Users\Student\Documents\ASPNET\BirdApp\BirdApp\obj\Debug\netcoreapp3.1\Razor\Views\BirdSighting\AddSighting.cshtml.g.cs
+C:\Users\Student\Documents\ASPNET\BirdApp\BirdApp\obj\Debug\netcoreapp3.1\Razor\Views\BirdSighting\Index.cshtml.g.cs
+C:\Users\Student\Documents\ASPNET\BirdApp\BirdApp\obj\Debug\netcoreapp3.1\Razor\Views\BirdSighting\DeleteSighting.cshtml.g.cs
+C:\Users\Student\Documents\ASPNET\BirdApp\BirdApp\obj\Debug\netcoreapp3.1\Razor\Views\BirdSighting\EditSighting.cshtml.g.cs

@@ -1,7 +1,7 @@
-﻿@model IEnumerable<BirdApp.Models.BirdSpecies>
+﻿@model IEnumerable<BirdSpecies>
 
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Bird Species Page";
 }
 <!DOCTYPE html>
 <html>
@@ -98,7 +98,13 @@
                 <td>@bird.PrimaryColor</td>
                 <td>@bird.Description</td>
                 <td>@bird.Habitat</td>
-                <td>TBD</td>
+                <td>
+                    @if (bird.Sightings.Count != 0)
+                    {
+                        @bird.Sightings.Count
+                    }
+                    <a asp-controller="BirdSighting" asp-action="AddSighting" asp-route-birdId="@bird.BirdID" class="btn btn-secondary">Add Sighting</a>
+                </td>
                 <td>
                     <a asp-controller="BirdSpecies" asp-action="EditBird"
                        asp-route-id="@bird.BirdID">Edit</a>
